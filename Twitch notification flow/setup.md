@@ -7,8 +7,6 @@
 
 In this part I will guide you in making and setting up a Twitch application which is needed to make the flow work.
 
-### Making the application
-
 1. go to the [Twitch developers console](https://dev.twitch.tv/console) and login with your twitch account
 2. click on "Register Your Application"
 3. enter a name for the application, this can be anything but i would suggest giving this the name of your bot, because it does have to be unique
@@ -17,24 +15,24 @@ In this part I will guide you in making and setting up a Twitch application whic
 6. set "Client Type" to "Confidential", it should be selected by default
 7. click on "Create"
 
-### Getting all the relevant information
+## Getting all the relevant information
 
 I would suggest you open a text editor on your device so you can paste all them there for use later on in this guide.
 I would suggest to do it like this, but this is entirely your choice.
 
 `Client ID = xxx`
 
-#### Client ID and Secret
+### Client ID and Secret
 
 These strings you can easily get in the [Twitch developers console](https://dev.twitch.tv/console) by going to the application that you just created.
 The Client ID is easily visible, so paste that in your notepad.
 For the Client Secret you just need to click on "New Secret" and then you can also paste that one in your notepad.
 
-#### Refresh Token and Access Token
+### Refresh Token and Access Token
 
 These two aren't as easily accessible and require different steps depending on your operating system.
 
-##### <ins>Windows</ins>
+#### <ins>Windows</ins>
 
 We will be using Windows PowerShell. You can open Windows PowerShell by clicking on the windows icon and searching for it. I will be providing code to paste, but you will need change placeholders with your own values.
 Placeholders will look like this: `"YOUR_CLIENT_ID"`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the placeholders and then paste them powershell.
@@ -97,7 +95,7 @@ token_type      : bearer
 
 Make sure to copy and paste `YOUR_ACCESS_TOKEN` and `YOUR_REFRESH_TOKEN` in your notepad.
 
-##### <ins>MacOS and Linux</ins>
+#### <ins>MacOS and Linux</ins>
 
 > [!IMPORTANT]
 > This section is still a work in progress since I don't have access to an Apple machine.

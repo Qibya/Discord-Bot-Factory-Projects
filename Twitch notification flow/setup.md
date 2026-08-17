@@ -27,7 +27,7 @@ These strings you can easily get in the [Twitch developers console](https://dev.
 The Client ID is easily visible, so paste that in your notepad.
 For the Client Secret you just need to click on "New Secret" and then you can also paste that one in your notepad.
 
-#### Refresh Token and Acces Token
+#### Refresh Token and Access Token
 
 These two aren't as easily accessible and require different steps depending on your operating system.
 

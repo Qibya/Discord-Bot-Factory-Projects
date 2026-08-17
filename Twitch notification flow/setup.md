@@ -1,5 +1,8 @@
 # Twitch notification flow setup guide
 
+> [!TIP]
+> If you encounter problems during any part of this guide feel free to ping me in the support channel on the [DBF Discord server](https://discord.gg/kdKzgc2YqG) with `@qibya`.
+
 ## Twitch application
 
 In this part I will guide you in making and setting up a Twitch application which is needed to make the flow work.
@@ -34,7 +37,7 @@ These two aren't as easily accessible and require different steps depending on y
 ##### <ins>Windows</ins>
 
 We will be using Windows PowerShell. You can open Windows PowerShell by clicking on the windows icon and searching for it. I will be providing code to paste, but you will need change placeholders with your own values.
-Placeholders will look like this: `"YOUR_CLIENT_ID"`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the the placeholders and paste then paste them into powershell.
+Placeholders will look like this: `"YOUR_CLIENT_ID"`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the placeholders and then paste them powershell.
 If powershell gives a warning because you are going to paste multiple lines of text click: "Paste anyway".
 
 First we need to authorize the app. Because we can't leave the scope empty, we use the permission that allows the app the read your email address. However this doesn't cause any harm since we don't need it and it will never be sent to DBF.
@@ -95,3 +98,25 @@ token_type      : bearer
 Make sure to copy and paste `YOUR_ACCESS_TOKEN` and `YOUR_REFRESH_TOKEN` in your notepad.
 
 ##### <ins>MacOS and Linux</ins>
+
+> [!IMPORTANT]
+> This section is still a work in progress since I don't have access to an Apple machine.
+
+## Discord Bot Factory flow
+
+Everything that follows is the completion of the setup that is done inside DBF.
+
+### Variables
+
+Here are all the variables you will need to create manually:
+
+| Name                 | Scope  | Default type | Default value      |
+| :------------------- | :----- | :----------- | :----------------- |
+| twitch_client_id     | Global | Text         | YOUR_CLIENT_ID     |
+| twitch_client_secret | Global | Text         | YOUR_CLIENT_SECRET |
+| twitch_refresh_token | Global | Text         | YOUR_REFRESH_TOKEN |
+| twitch_access_token  | Global | Text         | YOUR_ACCES_TOKEN   |
+| twitch_profile_image | Global | Text         | ~leave blank~      |
+| twitch_handle        | Global | Text         | YOUR_TWITCH_HANDLE |
+
+Your twitch handle is this: `https://www.twitch.tv/YOUR_TWITCH_HANDLE`

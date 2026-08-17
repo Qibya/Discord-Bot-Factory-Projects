@@ -35,10 +35,10 @@ These two aren't as easily accessible and require different steps depending on y
 #### <ins>Windows</ins>
 
 We will be using Windows PowerShell. You can open Windows PowerShell by clicking on the windows icon and searching for it. I will be providing code to paste, but you will need change placeholders with your own values.
-Placeholders will look like this: `"YOUR_CLIENT_ID"`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the placeholders and then paste them powershell.
+Placeholders will look like this: `"YOUR_CLIENT_ID"`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the placeholders and then paste them into powershell.
 If powershell gives a warning because you are going to paste multiple lines of text click: "Paste anyway".
 
-First we need to authorize the app. Because we can't leave the scope empty, we use the permission that allows the app the read your email address. However this doesn't cause any harm since we don't need it and it will never be sent to DBF.
+First we need to authorize the app. Because we can't leave the scope empty, we use the permission that allows the app to read your email address. However this doesn't cause any harm since we don't need it and it will never be sent to DBF.
 
 ```
 $clientId = "YOUR_CLIENT_ID"
@@ -99,6 +99,11 @@ Make sure to copy and paste `YOUR_ACCESS_TOKEN` and `YOUR_REFRESH_TOKEN` in your
 
 > [!IMPORTANT]
 > This section is still a work in progress since I don't have access to an Apple machine.
+
+We will be using a terminal. I will be providing code to paste, but you will need change placeholders with your own values.
+Placeholders will look like this: `'YOUR_CLIENT_ID'`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the placeholders and then paste them into the terminal.
+
+First we need to authorize the app. Because we can't leave the scope empty, we use the permission that allows the app to read your email address. However this doesn't cause any harm since we don't need it and it will never be sent to DBF.
 
 ## Discord Bot Factory flow
 

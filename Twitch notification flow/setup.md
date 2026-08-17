@@ -31,7 +31,7 @@ For the Client Secret you just need to click on "New Secret" and then you can al
 
 These two aren't as easily accessible and require different steps depending on your operating system.
 
-##### <u>Windows</u>
+##### <ins>Windows</ins>
 
 We will be using Windows PowerShell. You can open Windows PowerShell by clicking on the windows icon and searching for it. I will be providing code to paste, but you will need change placeholders with your own values.
 Placeholders will look like this: `"YOUR_CLIENT_ID"`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the the placeholders and paste then paste them into powershell.
@@ -56,4 +56,42 @@ Now a browser window should open and you should be asked to authorize this app, 
 Click on the address bar, the address should look like this: `http://localhost:3000/?code=THE_AUTHORIZATION_CODE&scope=...&state=...`, copy THE_AUTHORIZATION_CODE (without the &) and paste it into your notepad.
 You can now close the tab.
 
-##### <u>MacOS and Linux</u>
+Now that the app is authorised we are able to retrieve the refresh token and access token with the following code. Do not replace `grant_type = "authorization_code"`.
+
+```
+$clientId = "YOUR_CLIENT_ID"
+$clientSecret = "YOUR_CLIENT_SECRET"
+$redirectUri = "http://localhost:3000"
+$code = "THE_AUTHORIZATION_CODE"
+
+$body = @{
+    client_id     = $clientId
+    client_secret = $clientSecret
+    code          = $code
+    grant_type    = "authorization_code"
+    redirect_uri  = $redirectUri
+}
+
+$tokens = Invoke-RestMethod `
+    -Method Post `
+    -Uri "https://id.twitch.tv/oauth2/token" `
+    -ContentType "application/x-www-form-urlencoded" `
+    -Body $body
+
+$tokens
+```
+
+Again, you might need to press enter after `$tokens`.
+After pressing enter you should get something that looks like this:
+
+```
+access_token    : YOUR_ACCES_TOKEN
+expires_in      : 15066
+refresh_token   : YOUR_REFRESH_TOKEN
+scope           : {user:read:email}
+token_type      : bearer
+```
+
+Make sure to copy and paste `YOUR_ACCESS_TOKEN` and `YOUR_REFRESH_TOKEN` in your notepad.
+
+##### <ins>MacOS and Linux</ins>

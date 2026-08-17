@@ -114,7 +114,7 @@ Here are all the variables you will need to create manually:
 | twitch_client_secret | Global | Text         | YOUR_CLIENT_SECRET |
 | twitch_refresh_token | Global | Text         | YOUR_REFRESH_TOKEN |
 | twitch_access_token  | Global | Text         | YOUR_ACCES_TOKEN   |
-| twitch_profile_image | Global | Text         | ~leave blank~      |
+| twitch_profile_image | local  | Text         | ~leave blank~      |
 | twitch_handle        | Global | Text         | YOUR_TWITCH_HANDLE |
 
 Your twitch handle is this: `https://www.twitch.tv/YOUR_TWITCH_HANDLE`

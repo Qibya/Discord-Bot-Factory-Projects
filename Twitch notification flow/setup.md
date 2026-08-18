@@ -94,6 +94,7 @@ token_type      : bearer
 ```
 
 Make sure to copy and paste `YOUR_ACCESS_TOKEN` and `YOUR_REFRESH_TOKEN` in your notepad.
+Once you have done that you can safely close the terminal window.
 
 #### <ins>MacOS and Linux</ins>
 
@@ -104,6 +105,56 @@ We will be using a terminal. I will be providing code to paste, but you will nee
 Placeholders will look like this: `'YOUR_CLIENT_ID'`. Only change the text and leave the double quotation marks. I suggest you paste them first in a text editor to change the placeholders and then paste them into the terminal.
 
 First we need to authorize the app. Because we can't leave the scope empty, we use the permission that allows the app to read your email address. However this doesn't cause any harm since we don't need it and it will never be sent to DBF.
+
+```
+CLIENT_ID='YOUR_CLIENT_ID'
+CLIENT_SECRET='YOUR_CLIENT_SECRET'
+REDIRECT_URI='http://localhost:3000'
+SCOPE='user:read:email'
+STATE="$(uuidgen)"
+
+AUTH_URL="https://id.twitch.tv/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''$REDIRECT_URI''', safe=''))")&response_type=code&scope=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''$SCOPE''', safe=''))")&state=${STATE}"
+
+echo "$AUTH_URL"
+```
+
+This should print an URL to the terminal, now we will open the URL using the following:
+
+```
+# on macOS use:
+open "$AUTH_URL"
+
+# on Linux use:
+xdg-open "$AUTH_URL"
+```
+
+Now a browser window should open and you should be asked to authorize this app, click authorize. redirected, your browser may say "This site can't be reached", but this doesn't matter.
+
+Click on the address bar, the address should look like this: `http://localhost:3000/?code=THE_AUTHORIZATION_CODE&scope=...&state=...`, copy THE_AUTHORIZATION_CODE (without the &) and paste it into your notepad.
+You can now close the tab.
+
+Now that the app is authorised we are able to retrieve the refresh token and access token with the following code.
+
+```
+CODE='THE_AUTHORIZATION_CODE'
+
+curl --request POST 'https://id.twitch.tv/oauth2/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode "client_id=$CLIENT_ID" \
+  --data-urlencode "client_secret=$CLIENT_SECRET" \
+  --data-urlencode "code=$CODE" \
+  --data-urlencode 'grant_type=authorization_code' \
+  --data-urlencode "redirect_uri=$REDIRECT_URI"
+```
+
+Now your terminal should print a line that looks something like this:
+
+```
+  {"access_token":"YOUR_ACCES_TOKEN","expires_in":14102,"refresh_token":"YOUR_REFRESH_TOKEN","scope":["user:read:email"],"token_type":"bearer"}
+```
+
+Make sure to copy the acces token and the refresh token into your notepad.
+Once you have done this you can close the terminal window.
 
 ## Discord Bot Factory flow
 
